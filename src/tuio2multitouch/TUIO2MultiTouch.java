@@ -8,13 +8,14 @@ import TUIO.*;
 
 public class TUIO2MultiTouch {
 	//Parameters
-	static final int MAX_MULTI_TOUCH_NUM = 22;	//This is the maximum number for 3M multi touch screen
-	static final int INVALID_COORDINATE = -1;	//This is a constant for point not appeared
+	public static final int MAX_MULTI_TOUCH_NUM = 22;	//This is the maximum number for 3M multi touch screen
+	public static final int INVALID_COORDINATE = -1;	//This is a constant for point not appeared
 	
 	private TuioProcessing tuioClient;
 	private int width , height;
 	
 	public MyPoint[] mt;		//An array that store the multi touch coordinate
+	public int numOfTouches;
 	public TUIO2MultiTouch(TuioProcessing $tuioHandler, int $width , int $height) {
 		//The size is for the tuio device, for example, to receive tuio message from an iPad, its size is 1024x768
 		//If the size if given as the screen size, means the tuio coordinates is normalized to the current screen size.
@@ -23,8 +24,10 @@ public class TUIO2MultiTouch {
 		height= $height;
 		
 		mt = new MyPoint[MAX_MULTI_TOUCH_NUM];
+		numOfTouches = 0;
 		for (int i=0;i<MAX_MULTI_TOUCH_NUM;++i) {
 			mt[i] = new MyPoint();
+			numOfTouches ++;
 		}
 	}
 	

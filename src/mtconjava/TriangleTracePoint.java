@@ -19,11 +19,28 @@ public class TriangleTracePoint extends MyPoint {
 		this.y = $rhs.y;
 		this.touchIndex = $index;
 	}
-	public void computeValidity(MyPoint $rhs) {
-		//This function compare the current (x,y) with $rhs, 
-		//to see if it is still in the MOVING_THRESHOLD
-		int dxy = this.calcDistance($rhs);
-		if (dxy > this.MOVING_THRESHOLD) 
-			touchIndex = -1;	//The point probaly not come from original touchIndex
-	}
+	public void swapWith(TriangleTracePoint swapFrom) {
+	    int tmpInt;
+	    tmpInt = swapFrom.x;  
+	    swapFrom.x = x;  
+	    x = tmpInt;
+	    
+	    tmpInt = swapFrom.y;  
+	    swapFrom.y = y;  
+	    y = tmpInt;
+	    
+	    tmpInt = swapFrom.touchIndex;  
+	    swapFrom.touchIndex = touchIndex;  
+	    touchIndex = tmpInt;
+	  }
+
+
+	
+//	public void computeValidity(MyPoint $rhs) {
+//		//This function compare the current (x,y) with $rhs, 
+//		//to see if it is still in the MOVING_THRESHOLD
+//		int dxy = this.calcDistance($rhs);
+//		if (dxy > this.MOVING_THRESHOLD) 
+//			touchIndex = -1;	//The point probaly not come from original touchIndex
+//	}
 }

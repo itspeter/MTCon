@@ -12,15 +12,20 @@ public class MyPoint {
 		else
 			return true;
 	}
-	MyPoint () {
+	public MyPoint () {
 		x = y = 0;		
 	}
-	MyPoint(int $x,int $y) {
+	public MyPoint(int $x,int $y) {
 		x = $x;
 		y = $y;
 	}
-	MyPoint(MyPoint $rhs) {
+	public MyPoint(MyPoint $rhs) {
 		x = $rhs.x;
 		y = $rhs.y;
+	}
+	
+	public int calcDistance(MyPoint $rhs) {
+		//Probably overflow
+		return (x-$rhs.x)*(x-$rhs.x) + (y-$rhs.y)*(y-$rhs.y);
 	}
 }
